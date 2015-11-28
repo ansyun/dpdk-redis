@@ -32,7 +32,6 @@ EAL: Ask a virtual area of 0x15400000 bytes
 $ git clone https://github.com/opendp/dpdk-redis.git
 $ make
 $ sudo ./src/redis-server redis.conf
-[sudo] password for wu:
 start init opendp
 EAL: Detected lcore 0 as core 0 on socket 0
 EAL: Detected lcore 1 as core 1 on socket 0
