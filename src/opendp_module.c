@@ -145,7 +145,7 @@ int socket(int domain, int type, int protocol)
 {
     int rc;
 
-     ODP_FD_DEBUG("socket create start \n");    
+     ODP_FD_DEBUG("socket create start , domain %d, type %d \n", domain, type);    
    
     if ((inited == 0) ||  (AF_INET != domain) || (SOCK_STREAM != type && SOCK_DGRAM != type))
     {
@@ -323,7 +323,7 @@ ssize_t write(int fd, const void *buf, size_t count)
             {   
                 if(errno==NETDP_EAGAIN)  
                 {  
-                    usleep(200);  /* no space in netdp stack */
+             //       usleep(200);  /* no space in netdp stack */
                     continue;  
                 }  
                 else 
@@ -335,7 +335,7 @@ ssize_t write(int fd, const void *buf, size_t count)
 
             if (nwrite < n) 
             {
-                usleep(200);/* no space in netdp stack */
+         //       usleep(200);/* no space in netdp stack */
             }
             n -= nwrite;
             
@@ -556,9 +556,9 @@ int accept4(int sockfd, struct sockaddr *addr, socklen_t *addrlen, int flags)
  */
 int shutdown (int fd, int how)
 {
-    if (netdpsock_check(fd)) 
+    if (fd > ODP_FD_BASE) 
     {
-     //   fd &= ~(1 << ODP_FD_BITS);
+        fd -= ODP_FD_BASE;
         //netdpsock_close(fd);
         return 0;
     } 
@@ -642,6 +642,11 @@ int epoll_ctl(int epfd, int op, int fd, struct epoll_event *event)
 
     if (epfd > ODP_FD_BASE) 
     {
+        if(fd <= ODP_FD_BASE)
+        {
+            printf("skip linux fd %d \n", fd);
+            return 0;
+        }
         epfd -= ODP_FD_BASE;
         fd -= ODP_FD_BASE;
 
@@ -649,7 +654,12 @@ int epoll_ctl(int epfd, int op, int fd, struct epoll_event *event)
     }
     else 
     {
- //       assert(!(__fd & (1 << ODP_FD_BITS)));
+        if(fd > ODP_FD_BASE)
+        {
+            printf("skip netdp fd %d \n", fd);
+            return 0;
+        }
+
         rc = real_epoll_ctl(epfd, op, fd, event);
     }
     return rc;
