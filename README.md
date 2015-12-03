@@ -65,34 +65,31 @@ USER8: netdpsock any lcore id 0xffffffff
               `-.__.-'
 
 ```
-* Testing 
+* Performance Testing 
 ```
-$ sudo ./src/redis-benchmark -h 2.2.2.2 -p 6379 -n 100000 -c 50
-====== PING_INLINE ======
-  100000 requests completed in 12.67 seconds
-  50 parallel clients
-  3 bytes payload
-  keep alive: 1
+====ENV=== 
+CPU:Intel(R) Xeon(R) CPU E5-2430 0 @ 2.20GHz.
+NIC:Intel Corporation 82576 Gigabit Network Connection (rev 01) 
+OPENDP run on a lcore.
 
-0.00% <= 1 milliseconds
-0.01% <= 2 milliseconds
-0.21% <= 3 milliseconds
-3.15% <= 4 milliseconds
-25.01% <= 5 milliseconds
-48.78% <= 6 milliseconds
-64.38% <= 7 milliseconds
-83.74% <= 8 milliseconds
-97.78% <= 9 milliseconds
-99.54% <= 10 milliseconds
-99.71% <= 11 milliseconds
-99.89% <= 12 milliseconds
-99.93% <= 13 milliseconds
-99.95% <= 14 milliseconds
-99.97% <= 15 milliseconds
-99.98% <= 16 milliseconds
+root@h163:~/dpdk-redis# ./src/redis-benchmark -h 2.2.2.2  -p 6379 -n 100000 -c 50 -q
+PING_INLINE: 55679.29 requests per second
+PING_BULK: 55928.41 requests per second
+SET: 53361.79 requests per second
+GET: 55309.73 requests per second
+INCR: 55432.37 requests per second
+LPUSH: 53908.36 requests per second
+LPOP: 53850.30 requests per second
+SADD: 54975.26 requests per second
+SPOP: 55772.45 requests per second
+LPUSH (needed to benchmark LRANGE): 53937.43 requests per second
+LRANGE_100 (first 100 elements): 32927.23 requests per second
+LRANGE_300 (first 300 elements): 19051.25 requests per second
+LRANGE_500 (first 450 elements): 13912.08 requests per second
+LRANGE_600 (first 600 elements): 10713.52 requests per second
+MSET (10 keys): 44543.43 requests per second
 
 ```
-
 
 ####Support
 -------
