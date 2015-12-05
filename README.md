@@ -73,21 +73,21 @@ NIC:Intel Corporation 82576 Gigabit Network Connection (rev 01)
 OPENDP run on a lcore.
 
 root@h163:~/dpdk-redis# ./src/redis-benchmark -h 2.2.2.2  -p 6379 -n 100000 -c 50 -q
-PING_INLINE: 55679.29 requests per second
-PING_BULK: 55928.41 requests per second
-SET: 53361.79 requests per second
-GET: 55309.73 requests per second
-INCR: 55432.37 requests per second
-LPUSH: 53908.36 requests per second
-LPOP: 53850.30 requests per second
-SADD: 54975.26 requests per second
-SPOP: 55772.45 requests per second
-LPUSH (needed to benchmark LRANGE): 53937.43 requests per second
-LRANGE_100 (first 100 elements): 32927.23 requests per second
-LRANGE_300 (first 300 elements): 19051.25 requests per second
-LRANGE_500 (first 450 elements): 13912.08 requests per second
-LRANGE_600 (first 600 elements): 10713.52 requests per second
-MSET (10 keys): 44543.43 requests per second
+PING_INLINE: 75357.95 requests per second
+PING_BULK: 77459.34 requests per second
+SET: 68027.21 requests per second
+GET: 75700.23 requests per second
+INCR: 75075.07 requests per second
+LPUSH: 73855.24 requests per second
+LPOP: 74349.44 requests per second
+SADD: 75018.76 requests per second
+SPOP: 75987.84 requests per second
+LPUSH (needed to benchmark LRANGE): 74515.65 requests per second
+LRANGE_100 (first 100 elements): 44326.24 requests per second
+LRANGE_300 (first 300 elements): 16611.29 requests per second
+LRANGE_500 (first 450 elements): 13636.98 requests per second
+LRANGE_600 (first 600 elements): 8939.75 requests per second
+MSET (10 keys): 60716.46 requests per second
 
 ```
 
