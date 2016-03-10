@@ -94,7 +94,8 @@ MSET (10 keys): 66401.06 requests per second
 --------------
  * If opendp run on multicore, dpdk-redis can listen the same port many times, the listen socket can be deployend on each lcore automaticly.
  ```
- For example: opendp run on two lcores. can modify redis.conf as below. The two listen sockets will be deployed on respective lcore automaticly.
+ For example: opendp run on two lcores. can modify redis.conf as below. 
+ The two listen sockets will be deployed on respective lcore automaticly.
  ./build/opendp -c 0x6
 
  redis.conf
