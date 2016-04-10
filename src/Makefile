@@ -89,8 +89,8 @@ endif
 endif
 # Include paths to dependencies
 FINAL_CFLAGS+= -Wno-pedantic -I../deps/hiredis -I../deps/linenoise -I../deps/lua/src \
-	-I$(RTE_ANS)/librte_netdp/include \
-	-I$(RTE_ANS)/librte_netdpsock/include
+	-I$(RTE_ANS)/librte_ans/include \
+	-I$(RTE_ANS)/librte_anssock/include
 
 ifeq ($(MALLOC),tcmalloc)
 	FINAL_CFLAGS+= -DUSE_TCMALLOC
@@ -185,7 +185,7 @@ endif
 # redis-server
 $(REDIS_SERVER_NAME): $(REDIS_SERVER_OBJ)
 	$(REDIS_LD) -o $@ $^ ../deps/hiredis/libhiredis.a ../deps/lua/src/liblua.a \
-	$(RTE_ANS)/librte_netdpsock/librte_netdpsock.a \
+	$(RTE_ANS)/librte_anssock/librte_anssock.a \
 	$(RTE_SDK)/$(RTE_TARGET)/lib/librte_eal.a \
 	$(RTE_SDK)/$(RTE_TARGET)/lib/librte_mempool.a \
 	$(RTE_SDK)/$(RTE_TARGET)/lib/librte_ring.a \
