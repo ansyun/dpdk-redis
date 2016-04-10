@@ -1,6 +1,6 @@
 ####dpdk-redis
 --------------
-Fork from official redis-3.0.5, and run on the dpdk user space TCP/IP stack(NETDP). For detail function, please refer to redis official website(http://redis.io//).
+Fork from official redis-3.0.5, and run on the dpdk user space TCP/IP stack(ANS"Acceleted Network Stack"). For detail function, please refer to redis official website(http://redis.io//).
 
 ####build and install
 --------------
@@ -11,12 +11,12 @@ $ make install T=x86_64-native-linuxapp-gcc
 $ export RTE_SDK=/home/mytest/dpdk
 $ export RTE_TARGET=x86_64-native-linuxapp-gcc
 ```
-*  Download opendp following the [opendp wiki](https://github.com/opendp/dpdk-odp/wiki/Compile-APP-with-netdp), buld opendp and startup opendp
+*  Download ANS following the [ANS wiki](https://github.com/opendp/dpdk-ans/wiki/Compile-APP-with-ans), buld ans and startup ans
 ```
-$ git clone https://github.com/opendp/dpdk-odp.git
-$ export RTE_ODP=/home/mytest/dpdk-odp
+$ git clone https://github.com/opendp/dpdk-ans.git
+$ export RTE_ANS=/home/mytest/dpdk-ans
 $ make
-$ sudo ./build/opendp -c 0x1 -n 1  -- -p 0x1 --config="(0,0,0)"
+$ sudo ./build/ans -c 0x1 -n 1  -- -p 0x1 --config="(0,0,0)"
 EAL: Detected lcore 0 as core 0 on socket 0
 EAL: Detected lcore 1 as core 1 on socket 0
 EAL: Support maximum 128 logical core(s) by configuration.
@@ -70,7 +70,7 @@ USER8: netdpsock any lcore id 0xffffffff
 ====ENV=== 
 CPU:Intel(R) Xeon(R) CPU E5-2430 0 @ 2.20GHz.
 NIC:Intel Corporation 82576 Gigabit Network Connection (rev 01) 
-OPENDP run on a lcore.
+ANS run on a lcore.
 
 root@h163:~/dpdk-redis# ./src/redis-benchmark -h 2.2.2.2  -p 6379 -n 100000 -c 50 -q
 PING_INLINE: 86655.11 requests per second
@@ -90,13 +90,13 @@ LRANGE_600 (first 600 elements): 10324.18 requests per second
 MSET (10 keys): 66401.06 requests per second
 
 ```
-####Notes
+####Multi core support
 --------------
  * If opendp run on multicore, dpdk-redis can listen the same port many times, the listen socket can be deployend on each lcore automaticly.
  ```
  For example: opendp run on two lcores. can modify redis.conf as below. 
  The two listen sockets will be deployed on respective lcore automaticly.
- ./build/opendp -c 0x6
+ ./build/ans -c 0x6
 
  redis.conf
  # By default Redis listens for connections from all the network interfaces
@@ -112,4 +112,4 @@ bind 0.0.0.0 0.0.0.0
 
 ####Support
 -------
-For free support, please use netdp team mail list at zimeiw@163.com, or QQ Group:86883521, or https://dpdk-odp.slack.com.
+For free support, please use ans team mail list at zimeiw@163.com, or QQ Group:86883521, or https://dpdk-odp.slack.com.
