@@ -109,7 +109,8 @@ MSET (10 keys): 66401.06 requests per second
 bind 0.0.0.0 0.0.0.0
 
  ```
-####Remind
+####Support
+-------
 - In order to improve ANS performance, you shall isolate ANS'lcore from kernel by isolcpus and isolcate interrupt from ANS's lcore by update /proc/irq/default_smp_affinity file.
 
 ####Support
