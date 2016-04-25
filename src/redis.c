@@ -3579,9 +3579,9 @@ void redisSetProcTitle(char *title) {
 int main(int argc, char **argv) {
     struct timeval tv;
 
-    printf("start init opendp \n");
+    printf("start init anssock \n");
     /* init opendp socket */
-    opendp_init();
+    ans_mod_init();
 
     /* We need to initialize our libraries, and the server configuration. */
 #ifdef INIT_SETPROCTITLE_REPLACEMENT
