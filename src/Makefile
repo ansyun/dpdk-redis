@@ -186,9 +186,8 @@ endif
 $(REDIS_SERVER_NAME): $(REDIS_SERVER_OBJ)
 	$(REDIS_LD) -o $@ $^ ../deps/hiredis/libhiredis.a ../deps/lua/src/liblua.a \
 	$(RTE_ANS)/librte_anssock/librte_anssock.a \
-	$(RTE_SDK)/$(RTE_TARGET)/lib/librte_eal.a \
-	$(RTE_SDK)/$(RTE_TARGET)/lib/librte_mempool.a \
-	$(RTE_SDK)/$(RTE_TARGET)/lib/librte_ring.a \
+	-L$(RTE_SDK)/$(RTE_TARGET)/lib \
+ 	-Wl,--whole-archive -Wl,-lrte_mbuf -Wl,-lrte_mempool -Wl,-lrte_ring -Wl,-lrte_eal -Wl,--no-whole-archive -Wl,-export-dynamic \
 	$(FINAL_LIBS)
 
 # redis-sentinel
