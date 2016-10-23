@@ -114,6 +114,7 @@ bind 0.0.0.0 0.0.0.0
 
 ####Notes
 -------
+- Shall use the same gcc version to compile your application.
 - In order to improve ANS performance, you shall isolate ANS'lcore from kernel by isolcpus and isolcate interrupt from ANS's lcore by update /proc/irq/default_smp_affinity file.
 - You shall include dpdk libs as below way because mempool lib has __attribute__((constructor, used)) in dpdk-16.07 version, otherwise your application would coredump.
 ```
