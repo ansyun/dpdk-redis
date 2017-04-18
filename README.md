@@ -1,8 +1,8 @@
-####dpdk-redis
+#### dpdk-redis
 --------------
 Fork from official redis-3.0.5, and run on the dpdk user space TCP/IP stack(ANS"Acceleted Network Stack"). For detail function, please refer to redis official website(http://redis.io//).
 
-####build and install
+#### build and install
 --------------
 *  Download latest dpdk version from [dpdk website](http://dpdk.org/), and build dpdk
 ```
@@ -92,7 +92,7 @@ LRANGE_600 (first 600 elements): 10324.18 requests per second
 MSET (10 keys): 66401.06 requests per second
 
 ```
-####Multi core support
+#### Multi core support
 --------------
  * If opendp run on multicore, dpdk-redis can listen the same port many times, the listen socket can be deployend on each lcore automaticly.
  ```
@@ -112,7 +112,7 @@ bind 0.0.0.0 0.0.0.0
 
  ```
 
-####Notes
+#### Notes
 -------
 - Shall use the same gcc version to compile your application.
 - In order to improve ANS performance, you shall isolate ANS'lcore from kernel by isolcpus and isolcate interrupt from ANS's lcore by update /proc/irq/default_smp_affinity file.
@@ -124,6 +124,6 @@ bind 0.0.0.0 0.0.0.0
 
 ```
 
-####Support
+#### Support
 -------
 For free support, please use ans team mail list at zimeiw@163.com, or QQ Group:86883521, or https://dpdk-ans.slack.com.
