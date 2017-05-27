@@ -13,7 +13,7 @@ $ export RTE_TARGET=x86_64-native-linuxapp-gcc
 ```
 *  Download ANS following the [ANS wiki](https://github.com/opendp/dpdk-ans/wiki/Compile-APP-with-ans), buld ans and startup ans
 ```
-$ git clone https://github.com/opendp/dpdk-ans.git
+$ git clone https://github.com/ansyun/dpdk-ans.git
 $ export RTE_ANS=/home/mytest/dpdk-ans
 $ ./install_deps.sh
 $ cd ans
@@ -31,10 +31,10 @@ EAL: Ask a virtual area of 0x15400000 bytes
 ```
 *  Download dpdk-redis, build dpdk-redis and startup dpdk-redis
 ```
-$ git clone https://github.com/opendp/dpdk-redis.git
+$ git clone https://github.com/ansyun/dpdk-redis.git
 $ make
 $ sudo ./src/redis-server redis.conf
-start init opendp
+start init ans
 EAL: Detected lcore 0 as core 0 on socket 0
 EAL: Detected lcore 1 as core 1 on socket 0
 EAL: Support maximum 128 logical core(s) by configuration.
@@ -94,7 +94,7 @@ MSET (10 keys): 66401.06 requests per second
 ```
 #### Multi core support
 --------------
- * If opendp run on multicore, dpdk-redis can listen the same port many times, the listen socket can be deployend on each lcore automaticly.
+ * If ans run on multicore, dpdk-redis can listen the same port many times, the listen socket can be deployend on each lcore automaticly.
  ```
  For example: opendp run on two lcores. can modify redis.conf as below. 
  The two listen sockets will be deployed on respective lcore automaticly.
