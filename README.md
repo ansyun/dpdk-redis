@@ -96,7 +96,7 @@ MSET (10 keys): 66401.06 requests per second
 --------------
  * If ans run on multicore, dpdk-redis can listen the same port many times, the listen socket can be deployend on each lcore automaticly.
  ```
- For example: opendp run on two lcores. can modify redis.conf as below. 
+ For example: ans run on two lcores. can modify redis.conf as below. 
  The two listen sockets will be deployed on respective lcore automaticly.
  ./build/ans -c 0x6
 
