@@ -92,26 +92,6 @@ LRANGE_600 (first 600 elements): 10324.18 requests per second
 MSET (10 keys): 66401.06 requests per second
 
 ```
-#### Multi core support
---------------
- * If ans run on multicore, dpdk-redis can listen the same port many times, the listen socket can be deployend on each lcore automaticly.
- ```
- For example: ans run on two lcores. can modify redis.conf as below. 
- The two listen sockets will be deployed on respective lcore automaticly.
- ./build/ans -c 0x6
-
- redis.conf
- # By default Redis listens for connections from all the network interfaces
-# available on the server. It is possible to listen to just one or multiple
-# interfaces using the "bind" configuration directive, followed by one or
-# more IP addresses.
-#
-# Examples:
-#
-bind 0.0.0.0 0.0.0.0
-
- ```
-
 #### Notes
 -------
 - Shall use the same gcc version to compile your application.
