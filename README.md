@@ -33,28 +33,39 @@ EAL: Ask a virtual area of 0x15400000 bytes
 ```
 $ git clone https://github.com/ansyun/dpdk-redis.git
 $ make
-$ sudo ./src/redis-server redis.conf
-start init ans
+# ./src/redis-server  redis.conf
+start init anssock
 EAL: Detected lcore 0 as core 0 on socket 0
 EAL: Detected lcore 1 as core 1 on socket 0
+EAL: Detected lcore 2 as core 2 on socket 0
+EAL: Detected lcore 3 as core 3 on socket 0
+EAL: Detected lcore 4 as core 4 on socket 0
+EAL: Detected lcore 5 as core 5 on socket 0
+EAL: Detected lcore 6 as core 6 on socket 0
+EAL: Detected lcore 7 as core 7 on socket 0
 EAL: Support maximum 128 logical core(s) by configuration.
-...
-EAL: Mapped segment 15 of size 0x200000
-EAL: memzone_reserve_aligned_thread_unsafe(): memzone <RG_MP_log_history> already exists
-RING: Cannot reserve memory
-EAL: TSC frequency is ~2794463 KHz
-EAL: WARNING: cpu flags constant_tsc=yes nonstop_tsc=no -> using unreliable clock cycles !
-EAL: Master lcore 0 is ready (tid=fdb07940;cpuset=[0])
-USER8: netdpsock lcore id 0
-USER8: netdpsock any lcore id 0xffffffff
-18210:M 28 Nov 19:24:56.938 * Increased maximum number of open files to 150032 (it was originally set to 1024).
+EAL: Detected 8 lcore(s)
+EAL: Setting up physically contiguous memory...
+EAL: WARNING: Address Space Layout Randomization (ASLR) is enabled in the kernel.
+EAL:    This may cause issues with mapping memory into secondary processes
+EAL: Analysing 4 files
+EAL: Mapped segment 0 of size 0x100000000
+EAL: TSC frequency is ~1698035 KHz
+EAL: Master lcore 0 is ready (tid=9ca268c0;cpuset=[0])
+USER8: LCORE[-1] anssock any lcore id 0xffffffff
+USER8: LCORE[2] anssock app id: 17217
+USER8: LCORE[2] anssock app name: redis-server
+USER8: LCORE[2] anssock app lcoreId: 2
+USER8: LCORE[2] mp ops number 4, mp ops index: 0
+17217:M 05 Jan 20:54:43.676 * Increased maximum number of open files to 150032 (it was originally set to 65535).
+skip linux fd 8
                 _._
            _.-``__ ''-._
-      _.-``    `.  `_.  ''-._           Redis 3.0.5 (00000000/0) 64 bit
+      _.-``    `.  `_.  ''-._           Redis 3.0.5 (c279671c/0) 64 bit
   .-`` .-```.  ```\/    _.,_ ''-._
  (    '      ,       .-`  | `,    )     Running in standalone mode
  |`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
- |    `-._   `._    /     _.-'    |     PID: 18210
+ |    `-._   `._    /     _.-'    |     PID: 17217
   `-._    `-._  `-./  _.-'    _.-'
  |`-._`-._    `-.__.-'    _.-'_.-'|
  |    `-._`-._        _.-'_.-'    |           http://redis.io
@@ -65,6 +76,7 @@ USER8: netdpsock any lcore id 0xffffffff
       `-._    `-.__.-'    _.-'
           `-._        _.-'
               `-.__.-'
+
 
 ```
 * Performance Testing 
