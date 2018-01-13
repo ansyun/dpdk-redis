@@ -102,9 +102,6 @@ LRANGE_300 (first 300 elements): 14330.75 requests per second
 LRANGE_500 (first 450 elements): 10405.83 requests per second
 LRANGE_600 (first 600 elements): 7964.95 requests per second
 MSET (10 keys): 107758.62 requests per second
-
-
-
 ```
 * dpdk-redis vs official redis benchmark results
 
@@ -139,9 +136,6 @@ SET: 137296.62 requests per second
 GET: 137693.64 requests per second
 LPUSH: 139528.39 requests per second
 LPOP: 139014.39 requests per second
-
-
-
 ```
 
 #### Notes
