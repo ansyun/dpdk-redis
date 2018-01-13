@@ -103,7 +103,46 @@ LRANGE_500 (first 450 elements): 10405.83 requests per second
 LRANGE_600 (first 600 elements): 7964.95 requests per second
 MSET (10 keys): 107758.62 requests per second
 
+
+
 ```
+* dpdk-redis vs official redis benchmark results
+```
+official redis test was executed using the loopback interface. [benchmark results](https://redis.io/topics/benchmarks)
+dpdk-redis test was executed using the 82599ES interface.
+
+- with pipelining
+# ./src/redis-benchmark -h 10.0.0.2 -r 1000000 -n 2000000 -t get,set,lpush,lpop -P 16 -q
+SET: 645577.81 requests per second
+GET: 851063.88 requests per second
+LPUSH: 897666.12 requests per second
+LPOP: 984251.94 requests per second
+
+- without pipelining
+# ./src/redis-benchmark -h 10.0.0.2 -r 1000000 -n 2000000 -t get,set,lpush,lpop -q
+SET: 137080.19 requests per second
+GET: 137315.48 requests per second
+LPUSH: 138446.62 requests per second
+LPOP: 138600.14 requests per second
+
+- Linode 2048 instance (with pipelining)
+# ./src/redis-benchmark -h 10.0.0.2 -r 1000000 -n 2000000 -t get,set,lpush,lpop -q -P 16
+SET: 620925.19 requests per second
+GET: 821355.25 requests per second
+LPUSH: 903750.56 requests per second
+LPOP: 982800.94 requests per second
+
+-Linode 2048 instance (without pipelining)
+# ./src/redis-benchmark -h 10.0.0.2 -r 1000000 -n 2000000 -t get,set,lpush,lpop -q
+SET: 137296.62 requests per second
+GET: 137693.64 requests per second
+LPUSH: 139528.39 requests per second
+LPOP: 139014.39 requests per second
+
+
+
+```
+
 #### Notes
 -------
 - Shall use the same gcc version to compile your application.
