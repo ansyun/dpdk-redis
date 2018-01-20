@@ -108,6 +108,7 @@ MSET (10 keys): 107758.62 requests per second
 official redis test was executed using the loopback interface. [benchmark results](https://redis.io/topics/benchmarks/).
 
 dpdk-redis test was executed using the 82599ES interface.
+If run more redis-benchmark, could get higher performance.
 ```
 - with pipelining
 # ./src/redis-benchmark -h 10.0.0.2 -r 1000000 -n 2000000 -t get,set,lpush,lpop -P 16 -q
